@@ -27,7 +27,7 @@ Package.onUse(function(api) {
 
   api.addFiles(['wooidc_configure.html', 'wooidc_configure.js', 'wooidc_check_session.html', 'wooidc_check_session.js', 'wooidc_client.js'], 'client');
 
-  api.add_file('wooidc_server.js', 'server');
+  api.addFiles('wooidc_server.js', 'server');
   api.addAssets('wooidc_rpframe.html', 'client'); 
   
 });
