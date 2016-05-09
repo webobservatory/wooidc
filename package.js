@@ -23,7 +23,7 @@ Package.onUse(function(api) {
 
   api.use('service-configuration', ['client','server']);  
 
-  api.export('wooidc');
+  api.export('Wooidc');
 
   api.addFiles(['wooidc_configure.html', 'wooidc_configure.js', 'wooidc_check_session.html', 'wooidc_check_session.js', 'wooidc_client.js'], 'client');
 
