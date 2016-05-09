@@ -1,0 +1,20 @@
+<template name="configureLoginServiceDialogForWooidc">
+    <p>
+        You might have already created an OpenID Connect client configuration with Web Observatory as an OIDC provider.</p>
+
+    <p> First, you'll need to get a Southampton Web Observatory Client ID. Follow these steps: </p>
+
+   <ol> 
+      <li> Visit <a href="https://webobservatory.soton.ac.uk/profile#clients" target="blank">https://webobservatory.soton.ac.uk/profile#clients</a> </li>
+
+      <li> Set Homepage URL to: <span class="url">{{siteUrl}}</span></li>
+  
+      <li>
+        Set Authorization Callbacks URLs to: <span class="url">{{siteUrl}}oauth/wooidc</span>
+      </li>  
+   </ol>
+</template>
+
+
+
+
