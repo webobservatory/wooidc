@@ -61,7 +61,7 @@ var getTokens = function (query) {
                     client_id:      config.clientId,
                     client_secret:  config.clientSecret,
                     grant_type:     'authorization_code',
-                    redirect_uri:   Meteor.absoluteUrl('oauth/wooidc?close')
+                    redirect_uri:   Meteor.absoluteUrl('_oauth/wooidc?close')
                 }
             });
     }
