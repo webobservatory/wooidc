@@ -57,7 +57,7 @@ var getTokens = function (query) {
                 },
                 params: {
                     code:           query.code,
-                    //state:          query.state,
+                    state:          query.state,
                     client_id:      config.clientId,
                     client_secret:  config.clientSecret,
                     grant_type:     'authorization_code',
@@ -73,8 +73,9 @@ var getTokens = function (query) {
     if (response.data.error) { // if the http response was a json object with an error attribute
         throw new Error('Failed to complete OAuth handshake with WO OIDCP. ' + response.data.error);
     }
-
-    return response.data;
+    else{
+        return response.data;
+    }
 };
 
 var getUserProfile = function (accessToken) {
