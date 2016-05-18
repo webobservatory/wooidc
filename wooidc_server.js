@@ -2,6 +2,9 @@ Wooidc = {};
 
 OAuth.registerService('wooidc', 2, null, function (query) {
 
+    //var sslRootCAs = require('ssl-root-cas/latest');
+    //sslRootCAs.inject();
+
     var response = getTokens(query);
     var expiresAt = (+new Date) + (1000 * parseInt(response.expires_in, 10));
     var accessToken = response.access_token;
@@ -46,7 +49,7 @@ if (Meteor.release) {
 
 var getTokens = function (query) {
     var config = getConfiguration();
-    var response;
+    var response =  {rejectUnauthorized: false};
     try {
 
         response = HTTP.post(
@@ -65,7 +68,9 @@ var getTokens = function (query) {
                     //Meteor.absoluteUrl('_oauth/wooidc?close')
                 }
             });
+            console.log(response);
     }
+
     catch (err) {
         throw _.extend(new Error('Failed to complete OAuth handshake with WO OIDCP. ' + err.message),
                       { response: err.response });
@@ -81,7 +86,7 @@ var getTokens = function (query) {
 
 var getUserProfile = function (accessToken) {
     var config = getConfiguration();
-    var response;
+    var response = {rejectUnauthorized: false};;
     try {
         response = HTTP.get(
             'https://'+config.domain+'/api/userInfo', {
