@@ -9,8 +9,9 @@ Template.configureLoginServiceDialogForWooidc.fields = function () {
         { property: 'domain', label: 'Domain'},
         { property: 'clientId', label: 'Client ID'},
         { property: 'clientSecret', label: 'Client Secret'},
-        { property: 'authorizationEndpoint', label: 'Authorization Endpoint'},
-        { property: 'tokenEndpoint', label: 'Token Endpoint'},
-        { property: 'userinfoEndpoint', label: 'Userinfo Endpoint'}
+        //Commenting below properties as theye are pre-defined endpoint routes.
+        //{ property: 'authorizationEndpoint', label: 'Authorization Endpoint'},
+        //{ property: 'tokenEndpoint', label: 'Token Endpoint'},
+        //{ property: 'userinfoEndpoint', label: 'Userinfo Endpoint'}
     ];
 };

@@ -15,7 +15,7 @@ Wooidc.requestCredential = function (options, credentialRequestCompleteCallback)
     var config = ServiceConfiguration.configurations.findOne({ service: 'wooidc' });
 
     if (!config) {
-        credentialRequestCompleteCallback(new ServiceConfiguration.ConfigError('Service not configured.'));
+        credentialRequestCompleteCallback(new ServiceConfiguration.ConfigError(new ServiceConfiguration.ConfigError()));
         return;
     }
 
@@ -26,9 +26,9 @@ Wooidc.requestCredential = function (options, credentialRequestCompleteCallback)
     options.response_type = options.response_type || 'code';
     options.client_id = config.clientId;
     options.redirect_uri = OAuth._redirectUri('wooidc', config);
-    options.state = OAuth._stateParam(loginStyle, credentialToken, options.redirectUrl);
+    options.state = OAuth._stateParam(loginStyle, credentialToken, options && options.redirectUrl);
 
-    var scope = config.requestPermissions || ['openid', 'profile', 'offline_access'];
+    var scope = config.requestPermissions || ['openid', 'profile', 'offline_access']|| ['user:email'];
 
     options.scope = scope.join(' ');
 
@@ -36,7 +36,7 @@ Wooidc.requestCredential = function (options, credentialRequestCompleteCallback)
         options.display = 'popup';
     }
 
-    var loginUrl = 'https://' + config.domain + config.authorizationEndpoint + '?';
+    var loginUrl = 'https://' + config.domain + '/oauth/authorise/'+ '?';
 
     for (var k in options) {
         loginUrl += '&' + encodeURIComponent(k) + '=' + encodeURIComponent(options[k]);
@@ -44,7 +44,7 @@ Wooidc.requestCredential = function (options, credentialRequestCompleteCallback)
 
     options.popupOptions = options.popupOptions || {};
     var popupOptions = {
-        width:  options.popupOptions.width || 320,
+        width:  options.popupOptions.width || 900,
         height: options.popupOptions.height || 450
     };
 

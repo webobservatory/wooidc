@@ -9,7 +9,7 @@ Oauth.registerService('wooidc', 2, null, function (query) {
 
     var username = identity.name || identity.email;
     var serviceData = {
-        id:           identity.sub,
+        id:           identity.id,
         accessToken:  accessToken,
         refreshToken: response.refresh_token,
         scope:        response.scope,
@@ -50,7 +50,7 @@ var getTokens = function (query) {
     try {
 
         response = HTTP.post(
-            'https://' + config.domain + config.tokenEndpoint, {
+            'https://'+config.domain+'/oauth/token', {
                 headers: {
                     Accept: 'application/json',
                     'User-Agent': userAgent
@@ -83,7 +83,7 @@ var getUserProfile = function (accessToken) {
     var response;
     try {
         response = HTTP.get(
-            'https://' + config.domain + config.userinfoEndpoint, {
+            'https://'+config.domain+'/api/userInfo' {
                 headers: {
                     'User-Agent': userAgent
                 },

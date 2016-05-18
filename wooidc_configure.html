@@ -4,21 +4,19 @@
 
     <p> First, you'll need to get a Southampton Web Observatory Client ID. Follow these steps: </p>
 
-   <ol> 
+   <ol>
       <li> Visit <a href="https://webobservatory.soton.ac.uk/profile#clients" target="blank">https://webobservatory.soton.ac.uk/profile#clients</a> </li>
 
       <li> Set Homepage URL to: <span class="url">{{siteUrl}}</span></li>
-      <li> Set the Domain to: <span class="url"><a href="webobservatory.soton.ac.uk" target="blank">webobservatory.soton.ac.uk</a></span></li>  
+      <li> Set the Domain to: <span class="url"><a href="webobservatory.soton.ac.uk" target="blank">webobservatory.soton.ac.uk</a></span></li>
       <li>
         Set Authorization Callbacks URLs to: <span class="url">{{siteUrl}}_oauth/wooidc</span>
       </li>
-      <li> Set Authorization Endpoint to: <span class="url">/oauth/authorise</span></li>
+
+      <!-- Commenting as these are the pre-defined endpoint routes.-->
+      <!--li> Set Authorization Endpoint to: <span class="url">/oauth/authorise</span></li>
       <li> Set Token Endpoint to: <span class="url">/oauth/token</span></li>
-      <li> Set UserInfo Endpoint to: <span class="url">/api/userInfo</span></li>
-        
+      <li> Set UserInfo Endpoint to: <span class="url">/api/userInfo</span></li>-->
+
    </ol>
 </template>
-
-
-
-
