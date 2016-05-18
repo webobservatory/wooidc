@@ -1,6 +1,6 @@
 Package.describe({
   name: 'devasena:wooidc',
-  version: '0.0.6',
+  version: '0.0.7',
   // Brief, one-line summary of the package.
   summary: 'Southampton web observatory OpenID Connect Login flow',
   // URL to the Git repository containing the source code for this package.
