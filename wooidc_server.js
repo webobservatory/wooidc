@@ -83,7 +83,7 @@ var getUserProfile = function (accessToken) {
     var response;
     try {
         response = HTTP.get(
-            'https://'+config.domain+'/api/userInfo' {
+            'https://'+config.domain+'/api/userInfo', {
                 headers: {
                     'User-Agent': userAgent
                 },
