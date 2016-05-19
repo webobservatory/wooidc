@@ -8,12 +8,12 @@ OAuth.registerService('wooidc', 2, null, function (query) {
 
     var response = getTokens(query);
     var expiresAt = (+new Date) + (1000 * parseInt(response.expires_in, 10));
-    var accessToken = response.data.access_token;
+    var accessToken = response.access_token;
     var identity = getUserProfile(accessToken);
 
     var username = identity.name || identity.email;
     var serviceData = {
-        id:           identity.id,
+        id:           identity.sub,
         accessToken:  OAuth.sealSecret(accessToken),
         refreshToken: response.refresh_token,
         scope:        response.scope,
@@ -59,7 +59,7 @@ var getTokens = function (query) {
     console.log(config.domain);
     console.log(config.clientId);
     console.log(OAuth.openSecret(config.clientSecret));
-    console.log(Meteor.absoluteUrl('_oauth/wooidc?close'));
+    console.log(OAuth._redirectUri('Wooidc',config);
 
     try {
 
@@ -70,9 +70,9 @@ var getTokens = function (query) {
                 },
                params: {
                     code:           query.code,
-                    state:          query.state,
+                    //state:          query.state,
                     client_id:      config.clientId,
-                    client_secret:  config.clientSecret,
+                    client_secret:  OAuth.openSecret(config.clientSecret),
                     grant_type:     'authorization_code',
                     redirect_uri:   Meteor.absoluteUrl('_oauth/wooidc?close')
                 }
@@ -95,6 +95,8 @@ var getTokens = function (query) {
     }
 
     catch (err) {
+        console.log(query);
+        console.log(response);
         throw _.extend(new Error('Failed to complete OAuth handshake with WO OIDCP. ' + err.message),
                       { response: err.response });
     }
