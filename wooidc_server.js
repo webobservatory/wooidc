@@ -59,7 +59,7 @@ var getTokens = function (query) {
     console.log(config.domain);
     console.log(config.clientId);
     console.log(OAuth.openSecret(config.clientSecret));
-    console.log(OAuth._redirectUri('Wooidc',config));
+    console.log(OAuth._redirectUri('wooidc',config));
 
     try {
 
@@ -74,7 +74,8 @@ var getTokens = function (query) {
                     client_id:      config.clientId,
                     client_secret:  OAuth.openSecret(config.clientSecret),
                     grant_type:     'authorization_code',
-                    redirect_uri:   Meteor.absoluteUrl('_oauth/wooidc?close')
+                    redirect_uri:   OAuth._redirectUri('wooidc',config)
+                    //Meteor.absoluteUrl('_oauth/wooidc?close')
                 }
        });
 

@@ -28,7 +28,7 @@ Wooidc.requestCredential = function (options, credentialRequestCompleteCallback)
     options.redirect_uri = OAuth._redirectUri('wooidc', config);
     options.state = OAuth._stateParam(loginStyle, credentialToken, options && options.redirectUrl);
 
-    var scope = config.requestPermissions || ['openid', 'profile', 'offline_access']|| ['user:email'];
+    var scope = config.requestPermissions || ['openid', 'profile']|| ['user:email'];
 
     options.scope = scope.join(' ');
 
