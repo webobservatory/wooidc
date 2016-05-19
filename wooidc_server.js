@@ -1,4 +1,5 @@
 Wooidc = {};
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 OAuth.registerService('wooidc', 2, null, function (query) {
 
@@ -51,7 +52,7 @@ var getTokens = function (query) {
     var config = ServiceConfiguration.configurations.findOne({service: 'wooidc'});
     if (!config)
       throw new ServiceConfiguration.ConfigError();
-    
+
     //getConfiguration();
     var response;
     console.log(config);
@@ -76,10 +77,10 @@ var getTokens = function (query) {
                     redirect_uri:   Meteor.absoluteUrl('_oauth/wooidc?close')
                 }
        });
-         
+
         response = HTTP.post(
-            'https://' + config.domain +'/oauth/token', options 
-            );        
+            'https://' + config.domain +'/oauth/token', options
+            );
 
         if(response.error) // if the http response was an error
         {
@@ -93,7 +94,7 @@ var getTokens = function (query) {
         }
     }
 
-    catch (err) {        
+    catch (err) {
         throw _.extend(new Error('Failed to complete OAuth handshake with WO OIDCP. ' + err.message),
                       { response: err.response });
     }
@@ -145,6 +146,7 @@ Wooidc.retrieveCredential = function(credentialToken, credentialSecret) {
 
 Wooidc.httpOptions = function() {
     if(Meteor.settings.wp_oauth_accept_invalid_certs) {
+        process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
         return { npmRequestOptions: { rejectUnauthorized: false } };
     }
     return {};
