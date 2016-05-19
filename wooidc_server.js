@@ -13,7 +13,7 @@ OAuth.registerService('wooidc', 2, null, function (query) {
 
     var username = identity.name || identity.email;
     var serviceData = {
-        id:           identity.sub,
+        id:           identity.user_id,
         accessToken:  OAuth.sealSecret(accessToken),
         refreshToken: response.refresh_token,
         scope:        response.scope,
@@ -55,11 +55,11 @@ var getTokens = function (query) {
 
     //getConfiguration();
     var response;
-    console.log(config);
-    console.log(config.domain);
-    console.log(config.clientId);
-    console.log(OAuth.openSecret(config.clientSecret));
-    console.log(OAuth._redirectUri('wooidc',config));
+//    console.log(config);
+//    console.log(config.domain);
+//    console.log(config.clientId);
+//    console.log(OAuth.openSecret(config.clientSecret));
+//    console.log(OAuth._redirectUri('wooidc',config));
 
     try {
 
@@ -82,6 +82,8 @@ var getTokens = function (query) {
         response = HTTP.post(
             'https://' + config.domain +'/oauth/token', options
             );
+
+        //console.log(response);
 
         if(response.error) // if the http response was an error
         {
@@ -112,7 +114,7 @@ var getTokens = function (query) {
 
 var getUserProfile = function (accessToken) {
     var config = getConfiguration();
-    var response = {rejectUnauthorized: false};;
+    var response;
     try {
         response = HTTP.get(
             'https://'+config.domain+'/api/userInfo', {
@@ -123,6 +125,8 @@ var getUserProfile = function (accessToken) {
                     access_token: accessToken
                 }
             });
+
+       console.log(response);
     }
     catch (err) {
         throw _.extend(
