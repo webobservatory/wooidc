@@ -14,7 +14,7 @@ Package.onUse(function(api) {
   api.use('oauth2@1.1.9', ['client','server']);
   api.use('oauth@1.1.10', ['client', 'server']);
   api.use('http@1.1.5', ['server']);
-  api.use('underscore@1.0.8', 'client');
+  api.use('underscore@1.0.8', ['client','server']);
   api.use('templating@1.1.9', 'client');
   api.use('random@1.0.9', 'client');
   api.use('service-configuration@1.0.9', ['client','server']);
