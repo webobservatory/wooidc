@@ -55,11 +55,11 @@ var getTokens = function (query) {
 
     //getConfiguration();
     var response;
-//    console.log(config);
-//    console.log(config.domain);
-//    console.log(config.clientId);
-//    console.log(OAuth.openSecret(config.clientSecret));
-//    console.log(OAuth._redirectUri('wooidc',config));
+    console.log(config);
+    console.log(config.domain);
+    console.log(config.clientId);
+    console.log(OAuth.openSecret(config.clientSecret));
+    console.log(OAuth._redirectUri('wooidc',config));
 
     try {
 
@@ -83,7 +83,7 @@ var getTokens = function (query) {
             'https://' + config.domain +'/oauth/token', options
             );
 
-        //console.log(response);
+        console.log(response);
 
         if(response.error) // if the http response was an error
         {
