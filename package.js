@@ -1,10 +1,10 @@
 Package.describe({
-  name: 'webobservatory:wooidc',
-  version: '0.0.1',
+  name: 'devasena:wooidc',
+  version: '0.0.10',
   // Brief, one-line summary of the package.
   summary: 'Southampton web observatory OpenID Connect Login flow',
   // URL to the Git repository containing the source code for this package.
-  git: 'https://github.com/webobservatory/wooidc.git',
+  git: 'https://github.com/Southampton-RSG/wooidc.git',
   // By default, Meteor will default to using README.md for documentation.
   // To avoid submitting documentation, set this field to null.
   documentation: 'README.md'
@@ -18,11 +18,12 @@ Package.onUse(function(api) {
   api.use('templating@1.1.9', 'client');
   api.use('random@1.0.9', 'client');
   api.use('service-configuration@1.0.9', ['client','server']);
-
+  
   api.export('Wooidc');
+  api.export('selectedWONode');
 
   api.addFiles(['wooidc_configure.html', 'wooidc_configure.js', 'wooidc_check_session.html', 'wooidc_check_session.js'], 'client');
-
+  api.addFiles(['wooidc_global_methods.js'], ['client','server']);
   api.addFiles('wooidc_server.js', 'server');
   api.addFiles('wooidc_client.js', 'client')
 
@@ -33,6 +34,6 @@ Package.onUse(function(api) {
 Package.onTest(function(api) {
   api.use('ecmascript');
   api.use('tinytest');
-  api.use('webobservatory:wooidc');
+  api.use('devasena:wooidc');
   api.addFiles('wooidc-tests.js');
 });
