@@ -27,7 +27,7 @@ Wooidc.requestCredential = function (options, wonode, credentialRequestCompleteC
    
     var configDomains = config.config;
 
-    console.log("Configured Domains and credentials are as below: ", configDomains);
+    //console.log("Configured Domains and credentials are as below: ", configDomains);
 
     //Reading the array of configured WO domains and comparing with the clicked domain for login.
 

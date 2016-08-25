@@ -56,16 +56,16 @@ if (Meteor.release) {
 
 var getTokens = function (query) {
 
-    console.log("Query is: ", query);
+    //console.log("Query is: ", query);
 
     var config = getConfiguration(woNode);
    
     var response;
     console.log(config);
     console.log(config.domain);
-    console.log(config.clientId);
-    console.log(OAuth.openSecret(config.secret));
-    console.log(OAuth._redirectUri('wooidc',config));
+    //console.log(config.clientId);
+    //console.log(OAuth.openSecret(config.secret));
+    //console.log(OAuth._redirectUri('wooidc',config));
 
     try {
 
@@ -89,7 +89,7 @@ var getTokens = function (query) {
             'https://' + config.domain +'/oauth/token', options
             );
 
-        console.log(response);
+        //console.log(response);
 
         if(response.error) // if the http response was an error
         {
@@ -104,8 +104,8 @@ var getTokens = function (query) {
     }
 
     catch (err) {
-        console.log(query);
-        console.log(response);
+        //console.log(query);
+        //console.log(response);
         throw _.extend(new Error('Failed to complete OAuth handshake with WO OIDCP. ' + err.message),
                       { response: err.response });
     }
@@ -133,7 +133,7 @@ var getUserProfile = function (accessToken) {
                 }
             });
 
-       console.log(response);
+       //console.log(response);
     }
     catch (err) {
         throw _.extend(
@@ -152,7 +152,7 @@ var getConfiguration = function (woNode) {
     //Below processing for selected configured Web observatory node
    var configDomains = config.config;
 
-    console.log("Configured Domains and credentials are as below: ", configDomains);
+    //console.log("Configured Domains and credentials are as below: ", configDomains);
 
     //Reading the array of configured WO domains and comparing with the clicked domain for login.
 
@@ -181,7 +181,7 @@ var getConfiguration = function (woNode) {
 
 Wooidc.retrieveCredential = function(credentialToken, credentialSecret) {
     var cred = OAuth.retrieveCredential(credentialToken, credentialSecret);
-    console.log(cred);
+    //console.log(cred);
     return cred;
 };
 

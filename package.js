@@ -1,6 +1,6 @@
 Package.describe({
   name: 'webobservatory:wooidc',
-  version: '0.0.2',
+  version: '0.0.3',
   // Brief, one-line summary of the package.
   summary: 'Southampton web observatory OpenID Connect Login flow',
   // URL to the Git repository containing the source code for this package.
