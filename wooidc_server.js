@@ -7,7 +7,7 @@ OAuth.registerService('wooidc', 2, null, function (query) {
     //sslRootCAs.inject();
 
     //Checking the http GET query for WOOIDC service after login
-    console.log("Query is: ",query);
+    //console.log("Query is: ",query);
 
     //Selected WO node to login into
     console.log("Login into WO node: ", woNode);
@@ -61,7 +61,7 @@ var getTokens = function (query) {
     var config = getConfiguration(woNode);
    
     var response;
-    console.log(config);
+    //console.log(config);
     console.log(config.domain);
     //console.log(config.clientId);
     //console.log(OAuth.openSecret(config.secret));
@@ -120,7 +120,7 @@ var getTokens = function (query) {
 
 var getUserProfile = function (accessToken) {
     var config = getConfiguration(woNode);
-    console.log('Config again in getting User Profile: ', config);
+    //console.log('Config again in getting User Profile: ', config);
     var response;
     try {
         response = HTTP.get(

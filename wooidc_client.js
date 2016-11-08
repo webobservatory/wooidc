@@ -23,7 +23,7 @@ Wooidc.requestCredential = function (options, wonode, credentialRequestCompleteC
         credentialRequestCompleteCallback(new ServiceConfiguration.ConfigError(new ServiceConfiguration.ConfigError()));
         return;
     }
-    console.log("WO Configured domains: ",config);
+    //console.log("WO Configured domains: ",config);
    
     var configDomains = config.config;
 
@@ -62,7 +62,7 @@ Wooidc.requestCredential = function (options, wonode, credentialRequestCompleteC
 
     });
 
-    console.log("Selected wo node configuration: ", config);
+    //console.log("Selected wo node configuration: ", config);
 
     var credentialToken = Random.secret();
     var loginStyle = OAuth._loginStyle('wooidc', config, options);
